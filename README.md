@@ -1,4 +1,4 @@
-# Gpa-calculator
+# GPA-Calculator
 
 此程式使用node撰寫，執行後可以直接去南台選課系統抓取你的成績，並自動計算你的GPA成績。
 
