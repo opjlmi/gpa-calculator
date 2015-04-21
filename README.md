@@ -17,6 +17,6 @@
 
     node login.js [學號] [密碼]
 
-# 聯絡方式
+## Any questions?
 
 如果在執行上有任何問題，或者想協助我們一起改進這個程式，你可直接發送issue或直接寄信到 opjlmi[at]gmail.com 感謝！
