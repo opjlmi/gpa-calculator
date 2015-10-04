@@ -8,7 +8,7 @@ var request = require("request"),
 
 if (process.argv.length != 4){
     console.log('usage: node login.js [id] [password] ')
-    return 0;
+    process.exit()
 }
 
 request.post({
@@ -60,26 +60,28 @@ function _GET_Score (err,res,b){
             var g=1
             for(i=0; i<=sub.length; i=i+g) {
                 if(sub.eq(i).text()=='操行'){
-                	var the_score=sub.eq(i+3).text().match(/\d+/)[0];
-                	var the_credit=sub.eq(i+2).text().match(/\d+/)[0];
+                	var the_score=sub.eq(i+3).text().match(/\d+/);
+                	var the_credit=sub.eq(i+2).text().match(/\d+/);
                     score.push([sub.eq(i).text(),the_score, the_gpa(the_score,the_credit) ]);
                     g=4;
                     continue;
                 }
 
                 if( !isNaN(sub.eq(i).text() ) ){g=1;continue;}
-            	var the_score=sub.eq(i+3).text().match(/\d+/)[0];
-            	var the_credit=sub.eq(i+2).text().match(/\d+/)[0];
+            	var the_score=sub.eq(i+3).text().match(/\d+/);
+            	var the_credit=sub.eq(i+2).text().match(/\d+/);
                 score.push([sub.eq(i).text(),the_score, the_gpa(the_score,the_credit) ]);
             }
             console.log(score);
             console.log('GPA_total:',gpa_total);
             console.log('Credit_total:',credit_total);
             console.log('GPA:',gpa_total/credit_total);
+            process.exit()
         })
 }
 
 function the_gpa(the_score,the_credit){
+    var gpa;
 	if ( the_score > 80 ){
 		gpa=4
 	}else if( the_score > 70 ){
